@@ -1,0 +1,21 @@
+
+<html>
+    
+    <body>
+        {% extends 'pages/base.html' %}
+      {% block content %}
+    <form method="GET" style="border:4px; padding:10px; ">
+            <input type="text" name="search" placeholder="Enter text">
+      </form>
+        {% for i in p %}
+        <div class="p1" style="padding:10px; color:crimson;">
+            <tr>name :{{ i.name}}</tr><br>
+            <tr>price: {{ i.price }}</tr><br>
+            <tr>des :{{ i.des }}</tr><br>
+            <tr>review: {{ i.review}}</tr><br>
+            <tr>image: <img src="{{ i.img.url }}" style="height:100px; width:100px;"></tr><br>
+          
+         </div>
+        {% endfor%}
+        {% endblock %}
+    </body>

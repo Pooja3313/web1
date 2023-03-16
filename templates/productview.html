@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+    <head>
+        
+         <link rel="stylesheet" href="{% static 'css/view.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        
+       
+        <div class="p1"></div>
+       <tr>name :{{ v.name}}</tr><br>
+       <tr>price: {{ v.price }}</tr><br>
+       <tr>des :{{ v.des }}</tr><br>
+       <tr>image: {{ v.img }}</tr><br>
+       <tr>review: {{ v.review}}</tr><br>
+    </div>
+    </body>
+</html>

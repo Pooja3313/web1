@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+       
+        function check()
+        {
+            const usernameValue=frm.username.value.trim();
+            const passwordValue=frm.password.value.trim();    
+
+            if(usernameValue=="")
+            {
+                setErrorFor(username,"Username cannot be blank.");
+                frm.username.focus();
+                return false;
+            }
+            else
+            {
+                setSuccessFor(username);
+            }
+
+            if(passwordValue=="")
+            {
+                setErrorFor(password,"Password cannot be blank.");
+                frm.password.focus();
+                return false;
+            }
+            else if(!checkPassword4(frm.password))
+            {
+                setErrorFor(password,"Password must contain atleast 8 character.");
+                frm.password.focus();
+                return false;
+            }
+            else
+            {
+                setSuccessFor(password);
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <section id="banner">
+        <div id="form-box">
+            <div class="button-box">
+                <div id="btn1"></div>
+                <button type="button" class="buttons" onclick="newpage()">Login</button>
+                <button type="button" class="buttons">Sign Up</button>
+            </div>
+            <div class="social">
+                <div class="go"><i class="fab fa-google"></i>  Google</div>
+                <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            </div>
+            <form class="form" method="POST" onsubmit="return check()">
+                {% csrf_token %}
+                    <div class="form-control">
+                    <label for="username">Name</label>
+                    <input type="text" name="username" id="username" placeholder="Name">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div> 
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="email">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <div class="form-control">
+                    <label for="contactno">Contact Number</label>
+                    <input type="tel" name="contact" id="contactno" placeholder="Contact Number">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <!-- <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <div class="form-control">
+                    <label for="contactno">Contact Number</label>
+                    <input type="tel" name="" id="contactno" placeholder="Contact Number">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Username">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div> -->
+                <div class="form-control">
+                    <label for="password">Set Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <!-- <div class="form-control">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div> -->
+                <input class="submit-btn" id="login-btn" type="submit" value="Sign Up">
+                <p>Already registered? <a href="{% url 'login' %}">Login</a> here</p>
+            </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
+    

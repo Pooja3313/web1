@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>login form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        
+        function check()
+        {
+            const emailValue=frm.email.value.trim();
+            const passwordValue=frm.password.value.trim();    
+
+            if(email=="")
+            {
+                setErrorFor(email,"email cannot be blank.");
+                frm.username.focus();
+                return false;
+            }
+            else
+            {
+                setSuccessFor(email);
+            }
+
+            if(passwordValue=="")
+            {
+                setErrorFor(password,"Password cannot be blank.");
+                frm.password.focus();
+                return false;
+            }
+            else if(!checkPassword4(frm.password))
+            {
+                setErrorFor(password,"Password must contain atleast 8 character.");
+                frm.password.focus();
+                return false;
+            
+            else
+            {
+                setSuccessFor(password);
+            }
+        }
+   </script>    
+        
+</head>
+<body>
+    <section id="banner">
+        <div id="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="buttons">Login</button>
+                <button type="button" class="buttons" onclick="newpage()">Sign Up</button>
+            </div>
+            <div class="social">
+                <div class="go"><i class="fab fa-google"></i>  Google</div>
+                <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            </div>
+            <form class="form" id="form" name="frm" method="POST" onsubmit="return check()">
+                {% csrf_token %}
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Email">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error massege</small>
+                </div>
+                <input class="submit-btn" id="login-btn" type="submit" value="Login">
+                <div class="pqr">
+            <p>Not yet registered? <a href="{% url 'register' %}">signup</a> here</p>
+            </div>
+        </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
