@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import category, subadmin,Signup,Blog,Author,Entry,Register,Pro
 
 # Register your models here.
+#hiii
 admin.site.register(subadmin)
 admin.site.register(category)
 admin.site.register(Signup)
